@@ -1,3 +1,6 @@
+// @import 'bulma';
+@import '~bulma-timeline';
+
 .App {
   text-align: center;
 }
@@ -24,7 +27,11 @@
 
 .hidden {
   display: none;
-  text-align: center;
+  visibility: hidden;
+}
+
+.timeline {
+  margin-top: 5rem;
 }
 
 @keyframes App-logo-spin {

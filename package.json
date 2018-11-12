@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.7.2",
+    "bulma-extensions": "^3.0.0",
     "bulma-start": "^0.0.2",
+    "bulma-timeline": "^3.0.0",
     "node-sass": "^4.9.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
