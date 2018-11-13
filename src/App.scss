@@ -1,5 +1,7 @@
 // @import 'bulma';
 @import '~bulma-timeline';
+@import '~bulma-switch';
+@import '~bulma-divider';
 
 .App {
   text-align: center;
@@ -32,6 +34,24 @@
 
 .timeline {
   margin-top: 5rem;
+}
+
+.seriesMain {
+  margin-top: 5rem;
+}
+
+.seriesSection {
+  margin: 1rem;
+  padding: 2rem 1rem;
+  border: 2.5px solid white;
+}
+
+.seriesSwitch {
+  display: flex;
+}
+
+.switch {
+  align-self: flex-end;
 }
 
 @keyframes App-logo-spin {
