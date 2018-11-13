@@ -12,7 +12,7 @@ class TimeLine extends Component {
         <div className="timeline-item">
           <div className="timeline-marker" />
           <div className="timeline-content">
-            <p className="heading">January 2016</p>
+            <p className="heading">March 3rd</p>
             <div className="card">
               <div className="card-content">
                 <div className="media">
@@ -25,8 +25,8 @@ class TimeLine extends Component {
                     </figure>
                   </div>
                   <div className="media-content">
-                    <p className="title is-4">John Smith</p>
-                    <p className="subtitle is-6">@johnsmith</p>
+                    <p className="title is-4">Formula 1</p>
+                    <p className="subtitle is-6">Australian GP</p>
                   </div>
                 </div>
 
@@ -35,7 +35,7 @@ class TimeLine extends Component {
                   Phasellus nec iaculis mauris. <a>@bulmaio</a>.
                   <a href="#">#css</a> <a href="#">#responsive</a>
                   <br />
-                  <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                  <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                 </div>
               </div>
             </div>

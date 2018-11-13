@@ -41,17 +41,16 @@
 }
 
 .seriesSection {
-  margin: 1rem;
+  /* margin: 1rem;
   padding: 2rem 1rem;
   border: 2.5px solid white;
+  border-radius: 5%; */
 }
 
 .seriesSwitch {
+  padding: 0 1rem;
   display: flex;
-}
-
-.switch {
-  align-self: flex-end;
+  justify-content: space-between;
 }
 
 @keyframes App-logo-spin {
