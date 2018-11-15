@@ -13,7 +13,7 @@ class SeriesSwitch extends Component {
               name="switchRoundedDefault"
               className="switch is-rounded"
             />
-            <label for="switchRoundedDefault" />
+            <label htmlFor="switchRoundedDefault" />
           </div>
         </div>
       </>
