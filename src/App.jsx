@@ -10,9 +10,19 @@ import Auth from './Auth/Auth.js'
 
 const auth = new Auth()
 
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication()
+  }
+}
+
 class App extends Component {
   doesLogin = () => {
     auth.login()
+  }
+
+  doesLogout = () => {
+    auth.logout()
   }
 
   render() {
@@ -22,12 +32,24 @@ class App extends Component {
           <NavBar />
           <Switch>
             <Route path="/splashpage" component={SplashPage} />
-            <Route exact path="/" component={TimeLine} />
+            <Route
+              path="/"
+              render={props => <TimeLine auth={auth} {...props} />}
+            />
             <Route path="/seriesselect" component={SeriesSelect} />
-            <Route path="/callback" exact component={Callback} />
+            <Route
+              path="/callback"
+              render={props => {
+                handleAuthentication(props)
+                return <Callback {...props} />
+              }}
+            />
           </Switch>
           <button className="button is-light" onClick={this.doesLogin}>
             Log In
+          </button>
+          <button className="button is-light" onClick={this.doesLogout}>
+            Log Out
           </button>
         </div>
       </Router>
