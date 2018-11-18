@@ -1,8 +1,9 @@
 {
-  "name": "motocal",
+  "name": "gpcal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "auth0-js": "^9.8.2",
     "axios": "^0.18.0",
     "bulma": "^0.7.2",
     "bulma-divider": "^2.0.1",

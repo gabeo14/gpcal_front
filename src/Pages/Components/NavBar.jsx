@@ -41,7 +41,7 @@ class NavBar extends Component {
             className={`${this.state.burgClass} navbar-burger burger`}
             aria-label="menu"
             aria-expanded="false"
-            data-target="motoCalNavBar"
+            data-target="gpCalNavBar"
             onClick={this._burgerClick}
           >
             <span aria-hidden="true" />
@@ -49,10 +49,7 @@ class NavBar extends Component {
             <span aria-hidden="true" />
           </a>
         </div>
-        <div
-          id="motoCalNavBar"
-          className={`${this.state.burgClass}navbar-menu`}
-        >
+        <div id="gpCalNavBar" className={`${this.state.burgClass}navbar-menu`}>
           <div className="navbar-start">
             <a className="navbar-item">Home</a>
             <div className="navbar-item has-dropdown is-hoverable">
