@@ -1,8 +1,30 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import Auth from '../Auth/Auth.js'
 
 class TimeLine extends Component {
-  state = {}
+  state = {
+    profile: {}
+  }
+
+  doesLogin = () => {
+    this.props.auth.login()
+  }
+
+  doesLogout = () => {
+    this.props.auth.logout()
+  }
+
+  componentDidMount() {
+    //see if the user is logged in,
+    //if logged in, then display the user's name
+    if (this.props.auth.isAuthenticated()) {
+      this.props.auth.getProfile((err, profile) => {
+        this.setState({ profile, err })
+      })
+    }
+  }
+
   render() {
     return (
       <div className="timeline">
@@ -65,6 +87,12 @@ class TimeLine extends Component {
         <div className="timeline-header">
           <span className="tag is-medium is-primary">End</span>
         </div>
+        <button className="button is-light" onClick={this.doesLogin}>
+          Log In
+        </button>
+        <button className="button is-light" onClick={this.doesLogout}>
+          Log Out
+        </button>
       </div>
     )
   }
