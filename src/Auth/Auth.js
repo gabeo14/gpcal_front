@@ -7,6 +7,7 @@ export default class Auth {
     clientID: 'eW5l0oLt6LdahqZmsanpSAWDkjhJGXeM',
     redirectUri: 'http://localhost:3000/callback',
     responseType: 'token id_token',
+    audience: 'https://gpcal.api',
     scope: 'openid profile'
   })
 
@@ -24,6 +25,7 @@ export default class Auth {
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
+        console.log({ authResult })
         this.setSession(authResult)
         history.replace('/')
       } else if (err) {

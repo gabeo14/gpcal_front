@@ -24,7 +24,14 @@ class SeriesSelect extends Component {
         </h4>
         <section className="seriesSection">
           {this.state.series.map(series => {
-            return <SeriesSwitch key={series.id} name={series.name} />
+            return (
+              <SeriesSwitch
+                key={series.id}
+                name={series.name}
+                seriesId={series.id}
+                auth={this.props.auth}
+              />
+            )
           })}
 
           <div className="is-divider" />

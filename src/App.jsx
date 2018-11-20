@@ -13,6 +13,7 @@ const auth = new Auth()
 
 const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    console.log({ before: nextState.location.hash })
     auth.handleAuthentication()
   }
 }
@@ -30,7 +31,10 @@ class App extends Component {
               exact
               render={props => <TimeLine auth={auth} {...props} />}
             />
-            <Route path="/seriesselect" component={SeriesSelect} />
+            <Route
+              path="/seriesselect"
+              render={props => <SeriesSelect auth={auth} {...props} />}
+            />
             <Route
               path="/callback"
               render={props => {

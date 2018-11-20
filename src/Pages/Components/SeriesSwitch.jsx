@@ -1,17 +1,47 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class SeriesSwitch extends Component {
   state = {
     checked: ''
   }
 
-  _clickCheck = event => {
-    console.log('clicked bro')
+  _clickCheck = () => {
+    // console.log('clicked bro')
     if (this.state.checked === '') {
-      this.setState({ checked: 'checked' })
+      this.setState({ checked: 'checked' }, this._addFollow)
     } else {
-      this.setState({ checked: '' })
+      this.setState({ checked: '' }, this._removeFollow)
     }
+  }
+
+  _addFollow = () => {
+    // creating
+    console.log('following', this.props.seriesId)
+    axios
+      .post(
+        'https://localhost:5001/api/userpref',
+        {
+          SeriesId: this.props.seriesId
+        },
+        {
+          headers: {
+            Authorization: 'Bearer ' + this.props.auth.getAccessToken()
+          }
+        }
+      )
+      .then(() => {})
+  }
+
+  _removeFollow = () => {
+    console.log('unfollowing', this.props.seriesId)
+    axios
+      .delete('https://localhost:5001/api/userpref/' + this.props.seriesId, {
+        headers: {
+          Authorization: 'Bearer ' + this.props.auth.getAccessToken()
+        }
+      })
+      .then(() => {})
   }
 
   render() {
