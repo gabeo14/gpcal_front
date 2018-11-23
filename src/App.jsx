@@ -25,9 +25,13 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Switch>
-            <Route path="/splashpage" component={SplashPage} />
             <Route
               path="/"
+              exact
+              component={props => <SplashPage auth={auth} {...props} />}
+            />
+            <Route
+              path="/home"
               exact
               render={props => <TimeLine auth={auth} {...props} />}
             />
