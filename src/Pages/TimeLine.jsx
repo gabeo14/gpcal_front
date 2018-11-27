@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import TimeLineItem from './Components/TimeLineItem.jsx'
+import moment from 'moment-timezone'
 
 class TimeLine extends Component {
   state = {
     profile: {},
-    userSeries: []
+    userSeries: [],
+    noneFollowed: true,
+    localZone: ''
   }
 
   doesLogin = () => {
@@ -17,6 +20,7 @@ class TimeLine extends Component {
   }
 
   componentDidMount() {
+    this.guessZone()
     axios
       .get('https://localhost:5001/api/userpref', {
         headers: {
@@ -24,7 +28,9 @@ class TimeLine extends Component {
         }
       })
       .then(json => {
-        this.setState({ userSeries: json.data })
+        this.setState({ userSeries: json.data }, () => {
+          this.followedCheck()
+        })
       })
     //see if the user is logged in,
     //if logged in, then display the user's name
@@ -33,6 +39,14 @@ class TimeLine extends Component {
         this.setState({ profile, err })
       })
     }
+  }
+
+  followedCheck = () => {
+    this.setState({ noneFollowed: !(this.state.userSeries.length > 0) })
+  }
+
+  guessZone = () => {
+    this.setState({ localZone: moment.tz.guess() })
   }
 
   render() {
@@ -57,9 +71,17 @@ class TimeLine extends Component {
         </header>
         {/* header end */}
         {items}
-        <button className="button is-light" onClick={this.doesLogin}>
-          Log In
-        </button>
+        {this.state.noneFollowed && (
+          <div>
+            <h2 className="title is-2">Not following any series?</h2>
+            {/* <button className="button is-danger" onClick={this.doesLogin}>
+            Click Here
+          </button> */}
+            <a href="/seriesselect" className="button is-danger">
+              Click Here
+            </a>
+          </div>
+        )}
         <button className="button is-light" onClick={this.doesLogout}>
           Log Out
         </button>

@@ -11,6 +11,8 @@
     "bulma-start": "^0.0.2",
     "bulma-switch": "^2.0.0",
     "bulma-timeline": "^3.0.0",
+    "date-fns": "^1.29.0",
+    "moment-timezone": "^0.5.23",
     "node-sass": "^4.9.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
