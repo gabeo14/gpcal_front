@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import TimeLineItem from './Components/TimeLineItem.jsx'
-import moment from 'moment-timezone'
+import NavBar from './Components/NavBar.jsx'
 
 class TimeLine extends Component {
   state = {
@@ -63,33 +63,31 @@ class TimeLine extends Component {
       )
     })
     return (
-      // Main component
-      <div className="timeline">
-        {moment
-          .tz('2018-03-23T01:00:00', 'Etc/UTC')
-          .clone()
-          .tz(moment.tz.guess())
-          .toString()}
-        {/* header component */}
-        <header className="timeline-header">
-          <span className="tag is-medium is-primary">March 2018</span>
-        </header>
-        {/* header end */}
-        {items}
-        {this.state.noneFollowed && (
-          <div>
-            <h2 className="title is-2">Not following any series?</h2>
-            {/* <button className="button is-danger" onClick={this.doesLogin}>
+      <div>
+        <NavBar auth={this.props.auth} />
+        {/* // Main component */}
+        <div className="timeline">
+          {/* header component */}
+          <header className="timeline-header">
+            <span className="tag is-medium is-primary">March 2018</span>
+          </header>
+          {/* header end */}
+          {items}
+          {this.state.noneFollowed && (
+            <div>
+              <h2 className="title is-2">Not following any series?</h2>
+              {/* <button className="button is-danger" onClick={this.doesLogin}>
             Click Here
           </button> */}
-            <a href="/seriesselect" className="button is-danger">
-              Click Here
-            </a>
-          </div>
-        )}
-        <button className="button is-light" onClick={this.doesLogout}>
-          Log Out
-        </button>
+              <a href="/seriesselect" className="button is-danger">
+                Click Here
+              </a>
+            </div>
+          )}
+          <button className="button is-light" onClick={this.doesLogout}>
+            Log Out
+          </button>
+        </div>
       </div>
     )
   }

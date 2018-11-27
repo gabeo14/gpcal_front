@@ -6,6 +6,10 @@ class NavBar extends Component {
     dropClass: 'hidden'
   }
 
+  doesLogout = () => {
+    this.props.auth.logout()
+  }
+
   _burgerClick = event => {
     console.log('CLICKED BITCH')
     if (this.state.burgClass === '') {
@@ -76,10 +80,9 @@ class NavBar extends Component {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <a className="button is-dark">
-                  <strong>Sign up</strong>
+                <a className="button is-dark" onClick={this.doesLogout}>
+                  <strong>Logout</strong>
                 </a>
-                <a className="button is-light">Log in</a>
               </div>
             </div>
           </div>

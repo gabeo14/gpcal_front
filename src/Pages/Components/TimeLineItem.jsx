@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import moment from 'moment-timezone'
+import momentjs from 'moment'
 
 class TimeLineItem extends Component {
   render() {
@@ -6,7 +8,14 @@ class TimeLineItem extends Component {
       <div className="timeline-item">
         <div className="timeline-marker" />
         <div className="timeline-content">
-          <p className="heading">{this.props.eventTime}</p>
+          <p className="heading">
+            {moment
+              .tz(this.props.eventTime, 'Etc/UTC')
+              .clone()
+              .tz(moment.tz.guess())
+              .format('MMM Do YYYY')}
+          </p>
+
           <div className="card">
             <div className="card-content">
               <div className="media">
@@ -27,8 +36,18 @@ class TimeLineItem extends Component {
               <div className="content">
                 {this.props.type}
                 <br />
-                <time dateTime={this.props.eventTime}>
-                  {this.props.eventTime}
+                <time
+                  dateTime={moment
+                    .tz(this.props.eventTime, 'Etc/UTC')
+                    .clone()
+                    .tz(moment.tz.guess())
+                    .format('MMM Do YYYY, h:mm a')}
+                >
+                  {moment
+                    .tz(this.props.eventTime, 'Etc/UTC')
+                    .clone()
+                    .tz(moment.tz.guess())
+                    .format('MMM Do YYYY, h:mm a')}
                 </time>
               </div>
             </div>

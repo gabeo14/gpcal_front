@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import SeriesSwitch from './Components/SeriesSwitch'
 import axios from 'axios'
+import NavBar from './Components/NavBar.jsx'
 
 class SeriesSelect extends Component {
   constructor(props) {
@@ -38,27 +39,30 @@ class SeriesSelect extends Component {
 
   render() {
     return (
-      <main className="seriesMain">
-        {/* <h1 className="title is-1">Series</h1> */}
-        <h4 className="title is-4">
-          Select the series you would like to follow.
-        </h4>
-        <section className="seriesSection">
-          {this.state.series.map(series => {
-            return (
-              <SeriesSwitch
-                key={series.id}
-                name={series.name}
-                seriesId={series.id}
-                auth={this.props.auth}
-                isChecked={this.checkCheck(series.id)}
-              />
-            )
-          })}
+      <div>
+        <NavBar auth={this.props.auth} />
+        <main className="seriesMain">
+          {/* <h1 className="title is-1">Series</h1> */}
+          <h4 className="title is-4">
+            Select the series you would like to follow.
+          </h4>
+          <section className="seriesSection">
+            {this.state.series.map(series => {
+              return (
+                <SeriesSwitch
+                  key={series.id}
+                  name={series.name}
+                  seriesId={series.id}
+                  auth={this.props.auth}
+                  isChecked={this.checkCheck(series.id)}
+                />
+              )
+            })}
 
-          <div className="is-divider" />
-        </section>
-      </main>
+            <div className="is-divider" />
+          </section>
+        </main>
+      </div>
     )
   }
 }
