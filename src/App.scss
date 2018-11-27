@@ -32,12 +32,38 @@
   visibility: hidden;
 }
 
+.tlStuff {
+  display: flex;
+  justify-content: center;
+}
+
 .timeline {
   margin-top: 5rem;
 }
 
+.timeline-content {
+  min-width: 8em;
+}
+@media screen and (min-width: 769px) {
+  .timeline-content {
+    min-width: 30em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .timeline-content {
+    min-width: 40em;
+  }
+}
+
 .card {
   margin-right: 1.5rem;
+  width: 100%;
+}
+
+.card .media-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .seriesMain {

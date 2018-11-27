@@ -58,7 +58,7 @@ class SeriesSwitch extends Component {
       <>
         <div className="is-divider" />
         <div className="seriesSwitch" onClick={this._clickCheck}>
-          <p>{this.props.name}</p>
+          <h1 className="title is-5">{this.props.name}</h1>
           <div className="field switch">
             <input
               type="checkbox"

@@ -59,7 +59,7 @@ class NavBar extends Component {
               Home
             </a>
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link" onClick={this._dropClick}>
+              {/* <a className="navbar-link" onClick={this._dropClick}>
                 Schedule by Series
               </a>
               <div className={`${this.state.dropClass} navbar-dropdown`}>
@@ -70,7 +70,7 @@ class NavBar extends Component {
                 <a className="navbar-item">World Endurance Championship</a>
                 <hr className="navbar-divider" />
                 <a className="navbar-item">Indy Car</a>
-              </div>
+              </div> */}
             </div>
             <a className="navbar-item">About</a>
             <a href="/seriesselect" className="navbar-item">

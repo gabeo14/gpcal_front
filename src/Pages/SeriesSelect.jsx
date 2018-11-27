@@ -43,9 +43,9 @@ class SeriesSelect extends Component {
         <NavBar auth={this.props.auth} />
         <main className="seriesMain">
           {/* <h1 className="title is-1">Series</h1> */}
-          <h4 className="title is-4">
+          <h2 className="title is-2">
             Select the series you would like to follow.
-          </h4>
+          </h2>
           <section className="seriesSection">
             {this.state.series.map(series => {
               return (

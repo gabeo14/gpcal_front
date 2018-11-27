@@ -63,30 +63,26 @@ class TimeLine extends Component {
       )
     })
     return (
-      <div>
+      <div className="tlStuff">
         <NavBar auth={this.props.auth} />
         {/* // Main component */}
         <div className="timeline">
           {/* header component */}
-          <header className="timeline-header">
-            <span className="tag is-medium is-primary">March 2018</span>
-          </header>
+          {!this.state.noneFollowed && (
+            <header className="timeline-header">
+              <span className="tag is-medium is-primary">Your Races</span>
+            </header>
+          )}
           {/* header end */}
           {items}
           {this.state.noneFollowed && (
             <div>
               <h2 className="title is-2">Not following any series?</h2>
-              {/* <button className="button is-danger" onClick={this.doesLogin}>
-            Click Here
-          </button> */}
               <a href="/seriesselect" className="button is-danger">
                 Click Here
               </a>
             </div>
           )}
-          <button className="button is-light" onClick={this.doesLogout}>
-            Log Out
-          </button>
         </div>
       </div>
     )
