@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class SeriesSwitch extends Component {
-  state = {
-    checked: ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      checked: this.props.isChecked ? 'checked' : ''
+    }
   }
 
   _clickCheck = () => {
@@ -42,6 +45,12 @@ class SeriesSwitch extends Component {
         }
       })
       .then(() => {})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      checked: nextProps.isChecked ? 'checked' : ''
+    })
   }
 
   render() {

@@ -6,13 +6,34 @@ import axios from 'axios'
 class SeriesSelect extends Component {
   constructor(props) {
     super(props)
-    this.state = { series: [] }
+    this.state = { series: [], userSeries: [] }
+  }
+
+  checkCheck = seriesId => {
+    return this.state.userSeries
+      .map(series => series.seriesId)
+      .includes(seriesId)
   }
 
   componentDidMount() {
-    axios.get('https://localhost:5001/api/series').then(json => {
-      this.setState({ series: json.data })
-    })
+    axios
+      .get('https://localhost:5001/api/series')
+      .then(json => {
+        this.setState({ series: json.data })
+      })
+      .then(resp => {
+        axios
+          .get('https://localhost:5001/api/userpref/series', {
+            headers: {
+              Authorization: 'Bearer ' + this.props.auth.getAccessToken()
+            }
+          })
+          .then(json => {
+            this.setState({
+              userSeries: json.data
+            })
+          })
+      })
   }
 
   render() {
@@ -30,6 +51,7 @@ class SeriesSelect extends Component {
                 name={series.name}
                 seriesId={series.id}
                 auth={this.props.auth}
+                isChecked={this.checkCheck(series.id)}
               />
             )
           })}

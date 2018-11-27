@@ -51,7 +51,9 @@ class NavBar extends Component {
         </div>
         <div id="gpCalNavBar" className={`${this.state.burgClass}navbar-menu`}>
           <div className="navbar-start">
-            <a className="navbar-item">Home</a>
+            <a href="/home" className="navbar-item">
+              Home
+            </a>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link" onClick={this._dropClick}>
                 Schedule by Series
@@ -67,8 +69,9 @@ class NavBar extends Component {
               </div>
             </div>
             <a className="navbar-item">About</a>
-            <a className="navbar-item">Game</a>
-            <a className="navbar-item">Settings</a>
+            <a href="/seriesselect" className="navbar-item">
+              Settings
+            </a>
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
