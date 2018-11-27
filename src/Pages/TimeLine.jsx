@@ -46,7 +46,7 @@ class TimeLine extends Component {
   }
 
   guessZone = () => {
-    this.setState({ localZone: moment.tz.guess() })
+    //this.setState({ localZone: moment.tz.guess() })
   }
 
   render() {
@@ -65,6 +65,11 @@ class TimeLine extends Component {
     return (
       // Main component
       <div className="timeline">
+        {moment
+          .tz('2018-03-23T01:00:00', 'Etc/UTC')
+          .clone()
+          .tz(moment.tz.guess())
+          .toString()}
         {/* header component */}
         <header className="timeline-header">
           <span className="tag is-medium is-primary">March 2018</span>
