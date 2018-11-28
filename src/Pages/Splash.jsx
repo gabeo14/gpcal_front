@@ -8,15 +8,16 @@ class SplashPage extends Component {
 
   render() {
     return (
-      <section className="hero is-medium is-dark is-bold">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title is-1">GPCAL</h1>
-            <h2 className="subtitle is-2">Stay in the Race</h2>
-            <button className="button is-light" onClick={this.doesLogin}>
-              Log In
-            </button>
-          </div>
+      <section className="is-medium is-dark is-bold">
+        <div className="container splash">
+          <img
+            src="images/logo.png"
+            alt="gpcal logo"
+            className="is-responsive logo is-centered"
+          />
+          <button className="button is-light" onClick={this.doesLogin}>
+            Log In
+          </button>
         </div>
       </section>
     )
