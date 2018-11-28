@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import SeriesSwitch from './Components/SeriesSwitch'
 import axios from 'axios'
 import NavBar from './Components/NavBar.jsx'
+import config from '../Config'
 
 class SeriesSelect extends Component {
   constructor(props) {
@@ -18,13 +19,13 @@ class SeriesSelect extends Component {
 
   componentDidMount() {
     axios
-      .get('https://localhost:5001/api/series')
+      .get(`${config.API_URL}/series`)
       .then(json => {
         this.setState({ series: json.data })
       })
       .then(resp => {
         axios
-          .get('https://localhost:5001/api/userpref/series', {
+          .get(`${config.API_URL}/userpref/series`, {
             headers: {
               Authorization: 'Bearer ' + this.props.auth.getAccessToken()
             }

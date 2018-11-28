@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import config from '../../Config'
 
 class SeriesSwitch extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class SeriesSwitch extends Component {
     console.log('following', this.props.seriesId)
     axios
       .post(
-        'https://localhost:5001/api/userpref',
+        `${config.API_URL}/userpref/`,
         {
           SeriesId: this.props.seriesId
         },
@@ -39,7 +40,7 @@ class SeriesSwitch extends Component {
   _removeFollow = () => {
     console.log('unfollowing', this.props.seriesId)
     axios
-      .delete('https://localhost:5001/api/userpref/' + this.props.seriesId, {
+      .delete(`${config.API_URL}/userpref/` + this.props.seriesId, {
         headers: {
           Authorization: 'Bearer ' + this.props.auth.getAccessToken()
         }

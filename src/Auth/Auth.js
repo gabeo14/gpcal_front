@@ -1,11 +1,12 @@
 import auth0 from 'auth0-js'
 import history from '../history'
+import config from '../Config'
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'gabeo14.auth0.com',
     clientID: 'eW5l0oLt6LdahqZmsanpSAWDkjhJGXeM',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: `${config.CALLBACK_URL}/callback`,
     responseType: 'token id_token',
     audience: 'https://gpcal.api',
     scope: 'openid profile'

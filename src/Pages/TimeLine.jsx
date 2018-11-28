@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import TimeLineItem from './Components/TimeLineItem.jsx'
 import NavBar from './Components/NavBar.jsx'
+import config from '../Config'
 
 class TimeLine extends Component {
   state = {
@@ -22,7 +23,7 @@ class TimeLine extends Component {
   componentDidMount() {
     this.guessZone()
     axios
-      .get('https://localhost:5001/api/userpref', {
+      .get(`${config.API_URL}/userpref`, {
         headers: {
           Authorization: 'Bearer ' + this.props.auth.getAccessToken()
         }
